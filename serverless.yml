@@ -1,0 +1,55 @@
+service: dhs-code-assessment-api
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  timeout: 60
+  memorySize: 2048
+  stage: v1
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - rekognition:CompareFaces
+      Resource: "*"
+
+functions:
+  info:
+    name: info
+    description: This endpoint returns some basic information about the algorithm.
+    handler: handler.info
+    events:
+      - http:
+          path: "/info"
+          method: get
+          cors: true
+
+  compare_list:
+    name: compare_list
+    handler: handler.compare_list
+    description: This endpoint compares a single template to every template in a provided list. The result is a list of similarity scores for each comparison in the same order as the input list.
+    events:
+      - http:
+          path: "/compare-list"
+          method: post
+          cors: true
+  create_template:
+    name: create_templates
+    handler: handler.create_template
+    events:
+      - http:
+          path: "/create-template"
+          method: post
+          cors: true
+  get_list:
+    name: get_list
+    handler: handler.get_list
+    description: Get a list of templates for all already uploaded images
+    events:
+      - http:
+          path: "/get-list"
+          method: get
+          cors: true

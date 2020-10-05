@@ -1,0 +1,13 @@
+{
+  "name": "dhs-code-assessment-api",
+  "version": "1.0.0",
+  "description": "DHS Code Assessment API",
+  "dependencies": {
+    "aws-sdk": "^2.517.0",
+    "request": "^2.69.0",
+    "serverless": "^1.83.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^3.9.0"
+  }
+}
