@@ -2,6 +2,10 @@
 
 Simple AWS Rekognition matching api.  
 
+### Configuration
+
+The bucketName constant at the top of handler.js needs to be updated with a public s3 bucket for image storage.
+
 ### Run locally
 
 #### 1. Install
